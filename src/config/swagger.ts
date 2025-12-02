@@ -18,8 +18,8 @@ const options: swaggerJsdoc.Options = {
                 description: 'Development server',
             },
             {
-                url: 'https://your-production-url.com',
-                description: 'Production server',
+                url: 'https://banksavingsystem-api-production.up.railway.app',
+                description: 'Production server (Railway)',
             },
         ],
         components: {
