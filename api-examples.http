@@ -1,0 +1,118 @@
+# API Test Examples
+
+This file contains example HTTP requests for testing the Bank Saving System API.
+You can use REST Client extension in VS Code or import to Postman.
+
+### Health Check
+GET http://localhost:3000/api/health
+
+### ========== CUSTOMERS ==========
+
+### Get All Customers
+GET http://localhost:3000/api/customers
+
+### Search Customers
+GET http://localhost:3000/api/customers?search=john
+
+### Get Customer by ID
+GET http://localhost:3000/api/customers/{{customerId}}
+
+### Create Customer
+POST http://localhost:3000/api/customers
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}
+
+### Update Customer
+PUT http://localhost:3000/api/customers/{{customerId}}
+Content-Type: application/json
+
+{
+  "name": "John Doe Updated"
+}
+
+### Delete Customer
+DELETE http://localhost:3000/api/customers/{{customerId}}
+
+### ========== DEPOSITO TYPES ==========
+
+### Get All Deposito Types
+GET http://localhost:3000/api/deposito-types
+
+### Get Deposito Type by ID
+GET http://localhost:3000/api/deposito-types/{{depositoTypeId}}
+
+### Create Deposito Type
+POST http://localhost:3000/api/deposito-types
+Content-Type: application/json
+
+{
+  "name": "Deposito Platinum",
+  "yearly_return": 0.10
+}
+
+### Update Deposito Type
+PUT http://localhost:3000/api/deposito-types/{{depositoTypeId}}
+Content-Type: application/json
+
+{
+  "name": "Deposito Platinum Plus",
+  "yearly_return": 0.12
+}
+
+### Delete Deposito Type
+DELETE http://localhost:3000/api/deposito-types/{{depositoTypeId}}
+
+### ========== ACCOUNTS ==========
+
+### Get All Accounts
+GET http://localhost:3000/api/accounts
+
+### Get Accounts by Customer
+GET http://localhost:3000/api/accounts?customer_id={{customerId}}
+
+### Get Account by ID
+GET http://localhost:3000/api/accounts/{{accountId}}
+
+### Create Account
+POST http://localhost:3000/api/accounts
+Content-Type: application/json
+
+{
+  "customer_id": "{{customerId}}",
+  "deposito_type_id": "{{depositoTypeId}}",
+  "initial_balance": 1000000
+}
+
+### Delete Account
+DELETE http://localhost:3000/api/accounts/{{accountId}}
+
+### ========== TRANSACTIONS ==========
+
+### Get All Transactions
+GET http://localhost:3000/api/transactions
+
+### Get Transactions by Account
+GET http://localhost:3000/api/transactions?account_id={{accountId}}
+
+### Process Deposit
+POST http://localhost:3000/api/transactions/deposit
+Content-Type: application/json
+
+{
+  "account_id": "{{accountId}}",
+  "amount": 500000,
+  "transaction_date": "2025-12-02T12:00:00Z"
+}
+
+### Process Withdrawal
+POST http://localhost:3000/api/transactions/withdrawal
+Content-Type: application/json
+
+{
+  "account_id": "{{accountId}}",
+  "amount": 200000,
+  "transaction_date": "2025-12-02T12:00:00Z"
+}
